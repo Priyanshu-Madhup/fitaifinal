@@ -1,0 +1,93 @@
+/* Styles specific to the generate plan page */
+
+/* Workout plan styles */
+.workout-card {
+    border-left: 4px solid #10B981;
+    transition: transform 0.2s ease;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.workout-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
+}
+
+/* Enhanced form animations */
+.form-section {
+    opacity: 0;
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.form-section:nth-child(1) { animation-delay: 0.1s; }
+.form-section:nth-child(2) { animation-delay: 0.2s; }
+.form-section:nth-child(3) { animation-delay: 0.3s; }
+.form-section:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced input focus effects */
+.enhanced-input:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+}
+
+/* Range slider styling */
+input[type="range"] {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    height: 8px !important;
+    border-radius: 5px !important;
+    background: linear-gradient(to right, #10B981 0%, #10B981 50%, #e5e7eb 50%, #e5e7eb 100%) !important;
+    outline: none !important;
+    transition: all 0.3s ease !important;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #10B981;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+    transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #10B981;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+    transition: all 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+input[type="range"]::-moz-range-track {
+    height: 8px;
+    border-radius: 5px;
+    background: transparent;
+    border: none;
+}

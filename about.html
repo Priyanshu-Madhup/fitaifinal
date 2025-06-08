@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - FitAi</title>
+    <!-- Favicon -->
+    <link rel="icon" href="FitAi.png" type="image/png">
+    <link rel="shortcut icon" href="FitAi.png" type="image/png">
+    <link rel="apple-touch-icon" href="FitAi.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom configuration for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10B981', // Green
+                        secondary: '#F9FAFB', // White/Light
+                        dark: '#065F46', // Dark Green
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body class="bg-secondary">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 relative overflow-hidden">
+        <!-- Flowing Teal Gradient Elements -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <!-- Flowing gradient orbs - top to bottom -->
+            <div class="absolute -top-8 left-32 w-24 h-24 bg-gradient-to-br from-teal-200/30 to-primary/20 rounded-full blur-2xl animate-flow-down" style="animation-delay: 0s;"></div>
+            <div class="absolute -top-12 right-48 w-32 h-32 bg-gradient-to-tr from-emerald-200/25 to-teal-300/20 rounded-full blur-3xl animate-flow-down" style="animation-delay: 1.5s;"></div>
+            <div class="absolute -top-6 left-96 w-20 h-20 bg-gradient-to-br from-teal-300/25 to-primary/15 rounded-full blur-2xl animate-flow-down" style="animation-delay: 3s;"></div>
+            <div class="absolute -top-10 right-80 w-28 h-28 bg-gradient-to-tr from-primary/20 to-teal-200/25 rounded-full blur-3xl animate-flow-down" style="animation-delay: 4.5s;"></div>
+            <div class="absolute -top-14 center w-36 h-36 bg-gradient-to-br from-emerald-100/30 to-teal-400/20 rounded-full blur-3xl animate-flow-down" style="animation-delay: 2s; left: 50%;"></div>
+        </div>
+        
+        <!-- Floating Icons -->
+        <div class="absolute inset-0 pointer-events-none z-10">
+            <!-- Dumbbell Icon -->
+            <div class="absolute top-2 left-20 text-primary/20 animate-bounce" style="animation-delay: 0.5s; animation-duration: 3s;">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M3 9a1 1 0 011-1h1a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V9zM15 9a1 1 0 011-1h1a1 1 0 011 1v2a1 1 0 01-1 1h-1a1 1 0 01-1-1V9zM7 9a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1H8a1 1 0 01-1-1V9z"/>
+                </svg>
+            </div>
+            
+            <!-- Heart/Health Icon -->
+            <div class="absolute top-4 right-32 text-emerald-400/25 animate-pulse" style="animation-delay: 1s; animation-duration: 2.5s;">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+            
+            <!-- Fire/Energy Icon -->
+            <div class="absolute top-1 right-64 text-primary/20 animate-bounce" style="animation-delay: 2s; animation-duration: 4s;">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+            
+            <!-- Trophy/Achievement Icon -->
+            <div class="absolute top-3 left-80 text-green-400/20 animate-pulse" style="animation-delay: 1.5s; animation-duration: 3.5s;">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+            </div>
+            
+            <!-- Target/Goal Icon -->
+            <div class="absolute top-2 right-96 text-teal-400/25 animate-bounce" style="animation-delay: 0.8s; animation-duration: 2.8s;">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+            
+            <!-- Lightning/Power Icon -->
+            <div class="absolute top-1 left-96 text-primary/15 animate-pulse" style="animation-delay: 2.5s; animation-duration: 2s;">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex justify-between items-center py-3">
+                <div class="flex items-center">
+                    <img src="FitAi.png" alt="FitAi Logo" class="h-10 mr-3">
+                    <span class="text-green-600 font-bold text-xl">FitAi</span>
+                </div>                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-primary transition duration-300">Home</a>
+                    <a href="generate.html" class="text-gray-600 hover:text-primary transition duration-300">Generate Plan</a>
+                    <a href="chatbot.html" class="text-gray-600 hover:text-primary transition duration-300">Chatbot</a>
+                    <a href="locate.html" class="text-gray-600 hover:text-primary transition duration-300">Locate</a>
+                    <a href="events.html" class="text-gray-600 hover:text-primary transition duration-300">Events</a>
+                    <a href="demos.html" class="text-gray-600 hover:text-primary transition duration-300">Demos</a>
+                    <a href="about.html" class="text-primary font-medium hover:text-dark transition duration-300">About Us</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary transition duration-300">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-primary">Home</a>
+                <a href="generate.html" class="block py-2 text-gray-600 hover:text-primary">Generate Plan</a>
+                <a href="chatbot.html" class="block py-2 text-gray-600 hover:text-primary">Chatbot</a>
+                <a href="locate.html" class="block py-2 text-gray-600 hover:text-primary">Locate</a>
+                <a href="events.html" class="block py-2 text-gray-600 hover:text-primary">Events</a>
+                <a href="demos.html" class="block py-2 text-gray-600 hover:text-primary">Demos</a>
+                <a href="about.html" class="block py-2 text-primary font-medium">About Us</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-primary">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section class="relative py-20 bg-gradient-to-br from-gray-50 via-white to-emerald-50 overflow-hidden">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-32 w-80 h-80 bg-gradient-to-br from-primary/20 to-emerald-300/20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute -bottom-40 -left-32 w-96 h-96 bg-gradient-to-tr from-teal-200/30 to-primary/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+            
+            <!-- Floating icons -->
+            <div class="absolute top-20 left-10 text-primary/30 animate-bounce" style="animation-delay: 0.5s;">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path>
+                </svg>
+            </div>
+            <div class="absolute top-32 right-20 text-emerald-400/40 animate-bounce" style="animation-delay: 1.5s;">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <div class="absolute bottom-32 left-20 text-teal-400/30 animate-bounce" style="animation-delay: 2s;">
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clip-rule="evenodd"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <!-- Badge -->
+                <div class="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm border border-primary/20 rounded-full shadow-lg mb-6">
+                    <span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
+                    <span class="text-sm font-medium text-gray-700">Transforming Fitness Through AI</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    <span class="bg-gradient-to-r from-gray-900 via-primary to-emerald-600 bg-clip-text text-transparent">
+                        About FitAi
+                    </span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Our mission, values, and the passionate team behind the technology that's transforming fitness journeys worldwide
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-20 bg-gradient-to-br from-white to-gray-50 relative">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <div class="relative group">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-primary/20 to-emerald-400/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                        <img src="group2.jpg" alt="Team Working" class="relative rounded-2xl shadow-2xl max-w-full h-auto transform group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-xl">
+                        <h2 class="text-4xl font-bold bg-gradient-to-r from-gray-900 to-primary bg-clip-text text-transparent mb-6">Our Story</h2>
+                        <div class="space-y-6 text-gray-700 leading-relaxed">
+                            <p>FitAi was founded in 2025 by a group of passionate students from <span class="font-semibold text-primary">CMR Institute of Technology</span><span class="font-semibold text-primary"></span> who specialize in LLM & ML technologies. We recognized that personalized fitness guidance should be accessible to everyone, not just those who can afford expensive personal trainers.</p>
+                            
+                            <div class="bg-gradient-to-r from-primary/10 to-emerald-100/50 border-l-4 border-primary p-4 rounded-r-lg">
+                                <p class="font-semibold text-dark italic">"How can we make expert fitness guidance available to everyone?"</p>
+                                <p class="text-sm text-gray-600 mt-1">This simple question sparked our journey</p>
+                            </div>
+                            
+                            <p>The answer was artificial intelligence that could analyze individual needs and goals to create truly personalized fitness experiences. Today, FitAi combines scientific research in exercise physiology with cutting-edge AI to create adaptive fitness plans that evolve as you progress.</p>
+                            
+                            <div class="flex items-center gap-3 pt-4">
+                                <div class="w-12 h-12 bg-gradient-to-r from-primary to-emerald-500 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-dark">Thousands Transformed</p>
+                                    <p class="text-sm text-gray-600">We're proud to have helped people reach goals they once thought impossible</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="py-20 bg-gradient-to-br from-primary/5 via-white to-emerald-50 relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute top-10 right-10 w-32 h-32 bg-gradient-to-br from-primary/10 to-emerald-200/20 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-10 left-10 w-40 h-40 bg-gradient-to-tr from-teal-100/30 to-primary/10 rounded-full blur-3xl"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold bg-gradient-to-r from-gray-900 to-primary bg-clip-text text-transparent mb-4">Our Values</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">The principles that guide everything we do at FitAi</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center h-full">
+                        <div class="w-20 h-20 bg-gradient-to-br from-primary to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-4">Personalization</h3>
+                        <p class="text-gray-600 leading-relaxed">Every fitness journey is unique, and our technology reflects that by creating truly personalized experiences for each user.</p>
+                    </div>
+                </div>
+                
+                <div class="group">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center h-full">
+                        <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-4">Accessibility</h3>
+                        <p class="text-gray-600 leading-relaxed">Making professional-quality fitness guidance available to everyone, regardless of location or socioeconomic status.</p>
+                    </div>
+                </div>
+                
+                <div class="group">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center h-full">
+                        <div class="w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-4">Science-Based</h3>
+                        <p class="text-gray-600 leading-relaxed">Our recommendations are grounded in exercise science and research, not fads, trends, or untested theories.</p>
+                    </div>
+                </div>
+                
+                <div class="group">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center h-full">
+                        <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-4">Continuous Improvement</h3>
+                        <p class="text-gray-600 leading-relaxed">We're always learning and evolving, just like our users, by incorporating new research and feedback into our platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    <!-- Team Section -->
+    <section class="py-20 bg-gradient-to-br from-white to-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold bg-gradient-to-r from-gray-900 to-primary bg-clip-text text-transparent mb-4">Meet Our Team</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">The dedicated innovators who make FitAi possible</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="group">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center team-member-card">
+                        <div class="w-24 h-24 bg-gradient-to-br from-primary to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <span class="text-white font-bold text-2xl">PM</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-2">Priyanshu Madhup</h3>
+                        <div class="inline-flex items-center px-3 py-1 bg-gradient-to-r from-primary/10 to-emerald-100 rounded-full mb-3">
+                            <span class="text-primary text-sm font-medium">Founder & Student</span>
+                        </div>
+                        <p class="text-gray-700 font-medium mb-3">CMR Institute of Technology</p>
+                        <p class="text-gray-600 leading-relaxed">LLM specialist with extensive experience in machine learning and personalization algorithms.</p>
+                        
+                        <!-- Skills badges -->
+                        <div class="flex flex-wrap gap-2 justify-center mt-4">
+                            <span class="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">LLM</span>
+                            <span class="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full">ML</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="group">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center team-member-card">
+                        <div class="w-24 h-24 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <span class="text-white font-bold text-2xl">VM</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-2">Vishnu M</h3>
+                        <div class="inline-flex items-center px-3 py-1 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full mb-3">
+                            <span class="text-emerald-700 text-sm font-medium">Features & Execution Lead</span>
+                        </div>
+                        <p class="text-gray-700 font-medium mb-3">CMR Institute of Technology</p>
+                        <p class="text-gray-600 leading-relaxed">Expert in fitness-related features and logic generation systems.</p><br/>
+                        
+                        <!-- Skills badges -->
+                        <div class="flex flex-wrap gap-2 justify-center mt-4">
+                            <span class="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full">Features</span>
+                            <span class="px-2 py-1 bg-teal-100 text-teal-700 text-xs rounded-full">Logic</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="group">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center team-member-card">
+                        <div class="w-24 h-24 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <span class="text-white font-bold text-2xl">VD</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-2">Kotapati Venkata Danush</h3>
+                        <div class="inline-flex items-center px-3 py-1 bg-gradient-to-r from-teal-100 to-cyan-100 rounded-full mb-3">
+                            <span class="text-teal-700 text-sm font-medium">Deployment Specialist</span>
+                        </div>
+                        <p class="text-gray-700 font-medium mb-3">CMR Institute of Technology</p>
+                        <p class="text-gray-600 leading-relaxed">Specializes in deploying websites with various parameters and managing versions.</p>
+                        
+                        <!-- Skills badges -->
+                        <div class="flex flex-wrap gap-2 justify-center mt-4">
+                            <span class="px-2 py-1 bg-teal-100 text-teal-700 text-xs rounded-full">DevOps</span>
+                            <span class="px-2 py-1 bg-cyan-100 text-cyan-700 text-xs rounded-full">Deployment</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="group">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center team-member-card">
+                        <div class="w-24 h-24 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <span class="text-white font-bold text-2xl">RP</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-2">Raval Param</h3>
+                        <div class="inline-flex items-center px-3 py-1 bg-gradient-to-r from-cyan-100 to-blue-100 rounded-full mb-3">
+                            <span class="text-cyan-700 text-sm font-medium">UX/UI Designer</span>
+                        </div>
+                        <p class="text-gray-700 font-medium mb-3">CMR Institute of Technology</p>
+                        <p class="text-gray-600 leading-relaxed">Creates intuitive, accessible interfaces that make fitness technology approachable for all users.</p>
+                        
+                        <!-- Skills badges -->
+                        <div class="flex flex-wrap gap-2 justify-center mt-4">
+                            <span class="px-2 py-1 bg-cyan-100 text-cyan-700 text-xs rounded-full">UI/UX</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="py-20 bg-gradient-to-br from-primary/5 via-emerald-50 to-white relative overflow-hidden">
+        <!-- Background decorations -->
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="absolute top-20 right-20 w-40 h-40 bg-gradient-to-br from-primary/20 to-emerald-300/20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 left-20 w-32 h-32 bg-gradient-to-tr from-teal-200/30 to-primary/20 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold bg-gradient-to-r from-gray-900 to-primary bg-clip-text text-transparent mb-4">Our Impact</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">The difference FitAi is making in the world of fitness</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group text-center">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="text-4xl font-bold bg-gradient-to-r from-primary to-emerald-600 bg-clip-text text-transparent mb-2">500k+</div>
+                        <p class="text-dark font-medium">Active Users</p>
+                        <p class="text-sm text-gray-500 mt-1">Growing community</p>
+                    </div>
+                </div>
+                
+                <div class="group text-center">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <div class="text-4xl font-bold bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent mb-2">10M+</div>
+                        <p class="text-dark font-medium">Workouts Generated</p>
+                        <p class="text-sm text-gray-500 mt-1">Personalized plans</p>
+                    </div>
+                </div>
+                
+                <div class="group text-center">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="text-4xl font-bold bg-gradient-to-r from-teal-500 to-cyan-600 bg-clip-text text-transparent mb-2">85%</div>
+                        <p class="text-dark font-medium">Goal Achievement</p>
+                        <p class="text-sm text-gray-500 mt-1">Success rate</p>
+                    </div>
+                </div>
+                
+                <div class="group text-center">
+                    <div class="bg-white/70 backdrop-blur-sm border border-white/20 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="text-4xl font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent mb-2">42</div>
+                        <p class="text-dark font-medium">Countries Reached</p>
+                        <p class="text-sm text-gray-500 mt-1">Global impact</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="FitAi.png" alt="FitAi Logo" class="h-8 mr-3">
+                        <span class="text-white font-bold text-xl">FitAi</span>
+                    </div>
+                    <p class="text-gray-300 mt-2 max-w-xs">Transforming fitness through AI innovation and personalized guidance.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="index.html" class="text-gray-300 hover:text-white transition">Home</a></li>
+                            <li><a href="generate.html" class="text-gray-300 hover:text-white transition">Generate Plan</a></li>
+                            <li><a href="chatbot.html" class="text-gray-300 hover:text-white transition">Chatbot</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">More Info</h3>
+                        <ul class="space-y-2">
+                            <li><a href="locate.html" class="text-gray-300 hover:text-white transition">Locate</a></li>
+                            <li><a href="about.html" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                            <li><a href="contact.html" class="text-gray-300 hover:text-white transition">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center md:text-left md:flex md:justify-between md:items-center">
+                <p class="text-gray-400">© 2025 FitAi. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

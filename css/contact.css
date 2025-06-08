@@ -1,0 +1,173 @@
+/* Styles specific to the contact page */
+
+/* Contact form styling */
+.form-input:focus {
+    border-color: #10B981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.contact-info-card {
+    transition: all 0.3s ease;
+}
+
+.contact-info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced glassmorphism effects */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Contact form enhancements */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: #10B981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    transform: scale(1.01);
+}
+
+/* FAQ section animations */
+.faq-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Map section styling */
+.map-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.05) 100%);
+    pointer-events: none;
+}
+
+/* Social icons animations */
+.social-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icon:hover {
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Button hover effects */
+.btn-gradient {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+}
+
+/* Enhanced animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.floating-element {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive enhancements */
+@media (max-width: 768px) {
+    .glass-card {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+/* Accessibility improvements */
+.focus-visible:focus {
+    outline: 2px solid #10B981;
+    outline-offset: 2px;
+}
+
+/* Loading states */
+.loading {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Contact map specific styles */
+#contact-map-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Office marker styling */
+.office-marker {
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.office-marker:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+/* TomTom map container styling */
+#contact-map-container .mapboxgl-popup {
+    max-width: 300px;
+}
+
+#contact-map-container .mapboxgl-popup-content {
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Map controls styling */
+#contact-map-container .mapboxgl-ctrl-group {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#contact-map-container .mapboxgl-ctrl-group button {
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+#contact-map-container .mapboxgl-ctrl-group button:hover {
+    background: rgba(16, 185, 129, 0.1);
+}

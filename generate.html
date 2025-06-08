@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Plan - FitAi</title>
+    <!-- Favicon -->
+    <link rel="icon" href="FitAi.png" type="image/png">
+    <link rel="shortcut icon" href="FitAi.png" type="image/png">
+    <link rel="apple-touch-icon" href="FitAi.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom configuration for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10B981', // Green
+                        secondary: '#F9FAFB', // White/Light
+                        dark: '#065F46', // Dark Green
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        'blob': {
+                            '0%': {
+                                transform: 'translate(0px, 0px) scale(1)',
+                            },
+                            '33%': {
+                                transform: 'translate(30px, -50px) scale(1.1)',
+                            },
+                            '66%': {
+                                transform: 'translate(-20px, 20px) scale(0.9)',
+                            },
+                            '100%': {
+                                transform: 'translate(0px, 0px) scale(1)',
+                            },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        'glow': {
+                            '0%': { 'box-shadow': '0 0 20px rgba(16, 185, 129, 0.3)' },
+                            '100%': { 'box-shadow': '0 0 30px rgba(16, 185, 129, 0.6)' }
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        
+        /* Form enhancements */
+        .form-section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .form-section:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        
+        .form-section:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        
+        .form-section:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Enhanced input styling */
+        .enhanced-input {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .enhanced-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
+        }
+        
+        /* Success story cards */
+        .story-card {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .story-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/generate.css">
+</head>
+<body class="bg-secondary">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 relative overflow-hidden">
+        <!-- Flowing Teal Gradient Elements -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <!-- Flowing gradient orbs - top to bottom -->
+            <div class="absolute -top-8 left-32 w-24 h-24 bg-gradient-to-br from-teal-200/30 to-primary/20 rounded-full blur-2xl animate-flow-down" style="animation-delay: 0s;"></div>
+            <div class="absolute -top-12 right-48 w-32 h-32 bg-gradient-to-tr from-emerald-200/25 to-teal-300/20 rounded-full blur-3xl animate-flow-down" style="animation-delay: 1.5s;"></div>
+            <div class="absolute -top-6 left-96 w-20 h-20 bg-gradient-to-br from-teal-300/25 to-primary/15 rounded-full blur-2xl animate-flow-down" style="animation-delay: 3s;"></div>
+            <div class="absolute -top-10 right-80 w-28 h-28 bg-gradient-to-tr from-primary/20 to-teal-200/25 rounded-full blur-3xl animate-flow-down" style="animation-delay: 4.5s;"></div>
+            <div class="absolute -top-14 center w-36 h-36 bg-gradient-to-br from-emerald-100/30 to-teal-400/20 rounded-full blur-3xl animate-flow-down" style="animation-delay: 2s; left: 50%;"></div>
+        </div>
+        
+        <!-- Floating Icons -->
+        <div class="absolute inset-0 pointer-events-none z-10">
+            <!-- Dumbbell Icon -->
+            <div class="absolute top-2 left-20 text-primary/20 animate-bounce" style="animation-delay: 0.5s; animation-duration: 3s;">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M3 9a1 1 0 011-1h1a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V9zM15 9a1 1 0 011-1h1a1 1 0 011 1v2a1 1 0 01-1 1h-1a1 1 0 01-1-1V9zM7 9a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1H8a1 1 0 01-1-1V9z"/>
+                </svg>
+            </div>
+            
+            <!-- Heart/Health Icon -->
+            <div class="absolute top-4 right-32 text-emerald-400/25 animate-pulse" style="animation-delay: 1s; animation-duration: 2.5s;">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+            
+            <!-- Fire/Energy Icon -->
+            <div class="absolute top-1 right-64 text-primary/20 animate-bounce" style="animation-delay: 2s; animation-duration: 4s;">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+            
+            <!-- Trophy/Achievement Icon -->
+            <div class="absolute top-3 left-80 text-green-400/20 animate-pulse" style="animation-delay: 1.5s; animation-duration: 3.5s;">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+            </div>
+            
+            <!-- Target/Goal Icon -->
+            <div class="absolute top-2 right-96 text-teal-400/25 animate-bounce" style="animation-delay: 0.8s; animation-duration: 2.8s;">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+            
+            <!-- Lightning/Power Icon -->
+            <div class="absolute top-1 left-96 text-primary/15 animate-pulse" style="animation-delay: 2.5s; animation-duration: 2s;">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex justify-between items-center py-3">
+                <div class="flex items-center">
+                    <img src="FitAi.png" alt="FitAi Logo" class="h-10 mr-3">
+                    <span class="text-green-600 font-bold text-xl">FitAi</span>
+                </div>                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-primary transition duration-300">Home</a>
+                    <a href="generate.html" class="text-primary font-medium hover:text-dark transition duration-300">Generate Plan</a>
+                    <a href="chatbot.html" class="text-gray-600 hover:text-primary transition duration-300">Chatbot</a>
+                    <a href="locate.html" class="text-gray-600 hover:text-primary transition duration-300">Locate</a>
+                    <a href="events.html" class="text-gray-600 hover:text-primary transition duration-300">Events</a>
+                    <a href="demos.html" class="text-gray-600 hover:text-primary transition duration-300">Demos</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary transition duration-300">About Us</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary transition duration-300">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-primary">Home</a>
+                <a href="generate.html" class="block py-2 text-primary font-medium">Generate Plan</a>
+                <a href="chatbot.html" class="block py-2 text-gray-600 hover:text-primary">Chatbot</a>
+                <a href="locate.html" class="block py-2 text-gray-600 hover:text-primary">Locate</a>
+                <a href="events.html" class="block py-2 text-gray-600 hover:text-primary">Events</a>
+                <a href="demos.html" class="block py-2 text-gray-600 hover:text-primary">Demos</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-primary">About Us</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-primary">Contact Us</a>
+            </div>
+        </div>
+    </nav>    <!-- Generate Plan Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-primary/20 via-emerald-50 to-white relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+            <div class="absolute top-0 right-0 w-72 h-72 bg-emerald-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+            <div class="absolute -bottom-8 left-20 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg mb-6 animate-float">
+                    <div class="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+                    <span class="text-sm font-medium text-gray-700">AI Plan Generator Active</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl font-bold text-dark mb-6 leading-tight">
+                    Get Your <span class="bg-gradient-to-r from-primary to-emerald-600 bg-clip-text text-transparent">AI-Generated</span> Fitness Plan
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+                    Tell us about your goals, preferences, and limitations, and our advanced AI will create a personalized fitness plan tailored specifically for you.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <div class="flex items-center text-gray-600">
+                        <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="text-sm">Personalized Plans</span>
+                    </div>
+                    <div class="flex items-center text-gray-600">
+                        <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        <span class="text-sm">Science-Based</span>
+                    </div>
+                    <div class="flex items-center text-gray-600">
+                        <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                        <span class="text-sm">Download PDF</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Generate Plan Form Section -->
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Form Card -->
+                <div id="plan-form-container" class="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-gray-200 animate-glow">
+                    <form id="plan-form" class="space-y-8">
+                        <!-- Personal Information Section -->
+                        <div class="form-section">
+                            <div class="flex items-center mb-6">
+                                <div class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center mr-3">
+                                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                    </svg>
+                                </div>
+                                <h2 class="text-2xl font-bold text-dark">Personal Information</h2>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="first-name" class="block text-gray-700 font-medium mb-2">First Name</label>
+                                    <input type="text" id="first-name" class="enhanced-input w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Your first name">
+                                </div>
+                                <div>
+                                    <label for="last-name" class="block text-gray-700 font-medium mb-2">Last Name</label>
+                                    <input type="text" id="last-name" class="enhanced-input w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Your last name">
+                                </div>
+                                <div>
+                                    <label for="age" class="block text-gray-700 font-medium mb-2">Age</label>
+                                    <input type="number" id="age" min="16" max="100" class="enhanced-input w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Your age">
+                                </div>
+                                <div>
+                                    <label for="gender" class="block text-gray-700 font-medium mb-2">Gender</label>
+                                    <select id="gender" class="enhanced-input w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary">
+                                        <option value="">Select gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="non-binary">Non-binary</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                                <div>
+                                    <label for="height" class="block text-gray-700 font-medium mb-2">Height (cm)</label>
+                                    <input type="number" id="height" min="100" max="250" class="enhanced-input w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Height in centimeters">
+                                </div>
+                                <div>
+                                    <label for="weight" class="block text-gray-700 font-medium mb-2">Weight (kg)</label>
+                                    <input type="number" id="weight" min="30" max="300" class="enhanced-input w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Weight in kilograms">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sleep Information -->
+                        <div class="form-section">
+                            <div class="flex items-center mb-6">
+                                <div class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center mr-3">
+                                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                                    </svg>
+                                </div>
+                                <h2 class="text-2xl font-bold text-dark">Sleep Information</h2>
+                            </div>
+                            <div>
+                                <label for="sleep-hours" class="block text-gray-700 font-medium mb-2">Hours of sleep per night: <span id="sleep-hours-value">7</span></label>
+                                <input type="range" id="sleep-hours" min="4" max="12" value="7" step="0.5" class="w-full cursor-pointer">
+                                <div class="flex justify-between text-gray-700 mt-1">
+                                    <span>4 hours</span>
+                                    <span>8 hours</span>
+                                    <span>12 hours</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stress Level -->
+                        <div class="form-section">
+                            <div class="flex items-center mb-6">
+                                <div class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center mr-3">
+                                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </div>
+                                <h2 class="text-2xl font-bold text-dark">Stress Level</h2>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-xl">
+                                <label for="stress-level" class="block text-gray-700 font-medium mb-4">On a scale of 1-10, how would you rate your stress level? <span id="stress-level-value" class="text-primary font-bold">5</span></label>
+                                <input type="range" id="stress-level" min="1" max="10" value="5" class="w-full cursor-pointer">
+                                <div class="flex justify-between text-gray-700 mt-2">
+                                    <span class="text-sm">1 (Low)</span>
+                                    <span class="text-sm">5 (Moderate)</span>
+                                    <span class="text-sm">10 (High)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Fitness Preferences -->
+                        <div class="form-section">
+                            <div class="flex items-center mb-6">
+                                <div class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center mr-3">
+                                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                </div>
+                                <h2 class="text-2xl font-bold text-dark">Fitness Preferences</h2>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="fitness-goal" class="block text-gray-700 font-medium mb-2">Fitness Goal</label>
+                                    <select id="fitness-goal" class="enhanced-input w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary">
+                                        <option value="">Select goal</option>
+                                        <option value="weight-loss">Weight Loss</option>
+                                        <option value="muscle-gain">Muscle Gain</option>
+                                        <option value="flexibility">Flexibility</option>
+                                        <option value="general">General Fitness</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="workout-location" class="block text-gray-700 font-medium mb-2">Workout Location</label>
+                                    <select id="workout-location" class="enhanced-input w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary">
+                                        <option value="">Select location</option>
+                                        <option value="gym">Gym</option>
+                                        <option value="home">Home/Indoors</option>
+                                        <option value="outdoors">Outdoors</option>
+                                    </select>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="diet-preference" class="block text-gray-700 font-medium mb-2">Dietary Preferences</label>
+                                    <select id="diet-preference" class="enhanced-input w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary">
+                                        <option value="">Select your diet preference</option>
+                                        <option value="vegan">Vegan</option>
+                                        <option value="vegetarian">Vegetarian</option>
+                                        <option value="eggetarian">Eggetarian</option>
+                                        <option value="keto">Keto</option>
+                                        <option value="non-vegetarian">Non Vegetarian</option>
+                                        <option value="paleo">Paleo</option>
+                                        <option value="gluten-free">Gluten Free</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-6">
+                            <button type="submit" class="w-full bg-gradient-to-r from-primary to-emerald-600 hover:from-dark hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-xl transition duration-300 ease-in-out transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                <div class="flex items-center justify-center">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                    Generate My Personalized Fitness Plan
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Results Container (Hidden initially) -->                <div id="plan-results" class="hidden">
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold text-dark">Your Personalized Fitness Plan</h2>
+                            <button id="download-pdf" class="bg-primary hover:bg-dark text-white font-bold py-2 px-4 rounded-full flex items-center transition duration-300">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                </svg>
+                                Download PDF
+                            </button>
+                        </div>
+                        
+                        <div id="plan-summary" class="mb-8 p-4 bg-primary/10 rounded-lg">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-dark mb-4">Weekly Workout Schedule</h3>
+                            <div id="workout-days" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loading Spinner (Hidden initially) -->
+                <div id="loading-spinner" class="hidden flex flex-col items-center justify-center py-16">
+                    <div class="relative">
+                        <div class="w-20 h-20 border-4 border-primary/30 rounded-full"></div>
+                        <div class="w-20 h-20 border-4 border-primary border-t-transparent rounded-full animate-spin absolute top-0 left-0"></div>
+                        <div class="w-12 h-12 bg-gradient-to-r from-primary to-emerald-500 rounded-full absolute top-4 left-4 animate-pulse"></div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <p class="text-gray-700 font-semibold text-lg mb-2">Generating your personalized plan...</p>
+                        <p class="text-gray-500 text-sm">Our AI is analyzing your information to create the perfect fitness plan for you</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-20 left-20 w-32 h-32 bg-primary rounded-full animate-float"></div>
+            <div class="absolute bottom-20 right-20 w-24 h-24 bg-emerald-400 rounded-full animate-float animation-delay-2000"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg mb-6">
+                    <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <span class="text-sm font-medium text-gray-700">Simple 3-Step Process</span>
+                </div>
+                
+                <h2 class="text-4xl md:text-5xl font-bold text-dark mb-6">
+                    How It <span class="bg-gradient-to-r from-primary to-emerald-600 bg-clip-text text-transparent">Works</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Our advanced AI analyzes your inputs to create a customized fitness plan that's perfectly tailored for you</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="text-center p-8 group">
+                    <div class="relative mb-8">
+                        <div class="w-24 h-24 bg-gradient-to-r from-primary to-emerald-500 rounded-2xl flex items-center justify-center mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3">
+                            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+                            <span class="text-primary font-bold text-sm">1</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4 group-hover:text-primary transition-colors duration-300">Share Your Details</h3>
+                    <p class="text-gray-600 leading-relaxed">Tell us about your fitness goals, experience level, physical condition, and any special considerations or limitations.</p>
+                </div>
+                
+                <div class="text-center p-8 group">
+                    <div class="relative mb-8">
+                        <div class="w-24 h-24 bg-gradient-to-r from-emerald-500 to-primary rounded-2xl flex items-center justify-center mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3">
+                            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+                            <span class="text-primary font-bold text-sm">2</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4 group-hover:text-primary transition-colors duration-300">AI Creates Your Plan</h3>
+                    <p class="text-gray-600 leading-relaxed">Our advanced AI analyzes your inputs and creates a personalized plan based on scientific fitness principles and best practices.</p>
+                </div>
+                
+                <div class="text-center p-8 group">
+                    <div class="relative mb-8">
+                        <div class="w-24 h-24 bg-gradient-to-r from-primary to-emerald-500 rounded-2xl flex items-center justify-center mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3">
+                            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+                            <span class="text-primary font-bold text-sm">3</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark mb-4 group-hover:text-primary transition-colors duration-300">Start Your Journey</h3>
+                    <p class="text-gray-600 leading-relaxed">Receive your detailed plan including workouts, scheduling, nutrition guidance, and progress tracking recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gradient-to-br from-primary/10 via-emerald-50 to-white relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-10 right-10 w-64 h-64 bg-primary rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+            <div class="absolute bottom-10 left-10 w-64 h-64 bg-emerald-400 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg mb-6">
+                    <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                    </svg>
+                    <span class="text-sm font-medium text-gray-700">Real Success Stories</span>
+                </div>
+                
+                <h2 class="text-4xl md:text-5xl font-bold text-dark mb-6">
+                    <span class="bg-gradient-to-r from-primary to-emerald-600 bg-clip-text text-transparent">Success</span> Stories
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">See how FitAi has helped people transform their fitness journey with personalized AI-generated plans</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="story-card p-8 rounded-2xl shadow-xl border border-gray-200">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-primary to-emerald-500 rounded-full flex items-center justify-center mr-4 shadow-lg">
+                            <span class="text-white font-bold text-lg">JD</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-dark">John D.</h3>
+                            <div class="flex items-center mt-1">
+                                <svg class="w-4 h-4 text-primary mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <p class="text-primary text-sm font-medium">Lost 15kg in 6 months</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed italic">"FitAi created a workout plan that perfectly matched my busy schedule. The progressive nature of the program kept me challenged but never overwhelmed. I've achieved more than I thought possible!"</p>
+                </div>
+                
+                <div class="story-card p-8 rounded-2xl shadow-xl border border-gray-200">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-primary rounded-full flex items-center justify-center mr-4 shadow-lg">
+                            <span class="text-white font-bold text-lg">SK</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-dark">Sarah K.</h3>
+                            <div class="flex items-center mt-1">
+                                <svg class="w-4 h-4 text-primary mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <p class="text-primary text-sm font-medium">Improved strength & flexibility</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed italic">"As someone with previous injuries, I was hesitant to start working out again. The plan FitAi created was mindful of my limitations while still helping me make incredible progress. I'm stronger than ever!"</p>
+                </div>
+                
+                <div class="story-card p-8 rounded-2xl shadow-xl border border-gray-200">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-primary to-emerald-500 rounded-full flex items-center justify-center mr-4 shadow-lg">
+                            <span class="text-white font-bold text-lg">MT</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-dark">Michael T.</h3>
+                            <div class="flex items-center mt-1">
+                                <svg class="w-4 h-4 text-primary mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <p class="text-primary text-sm font-medium">Gained 8kg of muscle</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed italic">"The personalized workout plan FitAi created helped me break through plateaus I'd been stuck at for years. The progression was smart and the exercise selection was perfect for my goals. Highly recommended!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="FitAi.png" alt="FitAi Logo" class="h-8 mr-3">
+                        <span class="text-white font-bold text-xl">FitAi</span>
+                    </div>
+                    <p class="text-gray-300 mt-2 max-w-xs">Transforming fitness through AI innovation and personalized guidance.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="index.html" class="text-gray-300 hover:text-white transition">Home</a></li>
+                            <li><a href="generate.html" class="text-gray-300 hover:text-white transition">Generate Plan</a></li>
+                            <li><a href="chatbot.html" class="text-gray-300 hover:text-white transition">Chatbot</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">More Info</h3>
+                        <ul class="space-y-2">
+                            <li><a href="locate.html" class="text-gray-300 hover:text-white transition">Locate</a></li>
+                            <li><a href="about.html" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                            <li><a href="contact.html" class="text-gray-300 hover:text-white transition">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center md:text-left md:flex md:justify-between md:items-center">
+                <p class="text-gray-400">© 2025 FitAi. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>    <!-- PDF Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="env-preload.js"></script>
+    <script src="config.js"></script>
+    <script src="plan.js"></script>
+</body>
+</html>

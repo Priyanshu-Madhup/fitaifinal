@@ -1,0 +1,217 @@
+/* Styles specific to the events page */
+
+.event-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    background: linear-gradient(145deg, #ffffff, #f8fffe);
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #10B981, #059669, #0D9488);
+    opacity: 0.8;
+}
+
+.event-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.event-card:hover::before {
+    opacity: 1;
+    background: linear-gradient(90deg, #10B981, #059669, #0D9488, #065F46);
+}
+
+.event-category {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    border: 1px solid;
+    transition: all 0.3s ease;
+}
+
+.event-category:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-marathon {
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+    color: #1D4ED8;
+    border-color: #60A5FA;
+}
+
+.category-yoga {
+    background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+    color: #15803D;
+    border-color: #4ADE80;
+}
+
+.category-sports {
+    background: linear-gradient(135deg, #FEF2F2, #FEE2E2);
+    color: #B91C1C;
+    border-color: #F87171;
+}
+
+.category-fitness {
+    background: linear-gradient(135deg, #FFF7ED, #FFEDD5);
+    color: #C2410C;
+    border-color: #FB923C;
+}
+
+.category-running {
+    background: linear-gradient(135deg, #F0F9FF, #E0F2FE);
+    color: #0369A1;
+    border-color: #38BDF8;
+}
+
+.category-cycling {
+    background: linear-gradient(135deg, #F5F3FF, #EDE9FE);
+    color: #6D28D9;
+    border-color: #A78BFA;
+}
+
+.category-others {
+    background: linear-gradient(135deg, #F9FAFB, #F3F4F6);
+    color: #374151;
+    border-color: #9CA3AF;
+}
+
+.event-date {
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    font-weight: 700;
+    background: linear-gradient(135deg, #F3F4F6, #E5E7EB);
+    color: #374151;
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: 1px solid #D1D5DB;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+}
+
+.event-date.past-event {
+    background: linear-gradient(135deg, #FEF2F2, #FEE2E2);
+    color: #DC2626;
+    border-color: #F87171;
+}
+
+.event-link {
+    transition: all 0.3s ease;
+    text-decoration: none;
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.event-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.event-link:hover::before {
+    left: 100%;
+}
+
+.event-link:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.event-title {
+    color: #065F46;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #065F46, #047857);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.event-description {
+    color: #4B5563;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Enhanced input styling for search form */
+.enhanced-input {
+    transition: all 0.3s ease;
+    border: 2px solid #E5E7EB;
+    background: linear-gradient(145deg, #ffffff, #f8fffe);
+}
+
+.enhanced-input:focus {
+    border-color: #10B981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+    background: #ffffff;
+}
+
+.enhanced-input:hover {
+    border-color: #059669;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Results container styling */
+#results-container {
+    margin-top: 2rem;
+}
+
+#events-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    #events-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Dropdown styling */
+select {
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+select:hover {
+    border-color: #10B981;
+}
+
+/* Improve focus on search button */
+#search-events:focus {
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+    outline: none;
+}
